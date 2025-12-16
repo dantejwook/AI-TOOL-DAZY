@@ -86,3 +86,15 @@ if st.button("🚀 의미 기반 분석 실행"):
                 st.markdown(f"🔗 **{rec['document_id']}**: {rec['reason']}")
         except:
             st.error("추천 결과 파싱 오류")
+
+# STEP 6: 결과 다운로드 버튼
+zip_path = "outputs/summaries.zip"
+
+if os.path.exists(zip_path):
+    with open(zip_path, "rb") as f:
+        st.download_button(
+            label="📦 결과 ZIP 다운로드",
+            data=f,
+            file_name="summaries.zip",
+            mime="application/zip"
+        )
